@@ -4,123 +4,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Семестровая работа</title>
-    <link rel="stylesheet" href="style/styles.css">
+    <title>Портфолио | Главная</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 
-<body class="page">
-    <div class="page__container">
-        <!-- Переключатель темы -->
-        <div class="theme-switcher">
-            <button class="theme-switcher__button" type="button">Тёмная</button>
+<body>
+    <!-- Хедер -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Кудрявцева Екатерина Юрьевна</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="active">Главная</a></li>
+                    <li><a href="/pages/projects.html">Проекты</a></li>
+                    <li><a href="/pages/diary.html">Дневник</a></li>
+                    <li><a href="/pages/contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
         </div>
+    </header>
 
-        <!-- Хэдер -->
-        <header class="header">
-            <h1 class="header__title">Главная</h1>
-        </header>
-
-        <!-- Навигация -->
-        <nav class="nav">
-            <ul class="nav__list">
-                <li class="nav__item">
-                    <a class="nav__link nav__link--active" href="index.html">Главная</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="pages/news.html">Новости</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="pages/practices.html">Практики</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="pages/goods.html">Товары</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="pages/contacts.html">Контакты</a>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Основной контент -->
-        <main class="main">
-            <!-- Профиль -->
-            <section class="profile">
-                <div class="profile__header">
-                    <h1 class="profile__title">Информация об авторе</h1>
-                </div>
-
-                <div class="profile__card">
-                    <img class="profile__photo" src="images/photo.jpg" alt="Фото автора">
-                    <div class="profile__info">
-                        <h2 class="profile__name">Кудрявцева Екатерина Юрьевна</h2>
-                        <p class="profile__group">ЭФБО-02-24</p>
+    <!-- Основной контент -->
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2>Привет!</h2>
+                        <p class="subtitle">Я студентка группы ЭФБО-02-24</p>
+                        <p class="description">Увлекаюсь веб-разработкой и ML</p>
+                        <a href="assets/resume.pdf" class="btn" download>Скачать резюме</a>
+                    </div>
+                    <div class="hero-image">
+                        <div class="photo-placeholder">
+                            <div class="photo-frame">
+                                <img src="/images/photo2.jpg" alt="Мое фото" class="student-photo">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Обо мне -->
-            <section class="about">
-                <h2 class="about__title">Обо мне</h2>
-                <div class="about__content">
-                    <p class="about__text">
-                        Обо мне: Я не программист, я только учусь, но мирэа помогает нам совершать настоящие чудеса!
-                    </p>
+        <section class="skills">
+            <div class="container">
+                <h2>Мои навыки</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>HTML/CSS</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>JavaScript</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="50"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Bootstrap</span>
+                            <span>40%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="40"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Python</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Навыки -->
-            <section class="skills">
-                <h2 class="skills__title">Мои навыки</h2>
-                <div class="skills__list">
-                    <div class="skill">HTML</div>
-                    <div class="skill">CSS</div>
-                    <div class="skill">Python</div>
+        <section class="projects-preview">
+            <div class="container">
+                <h2>Лучшие проекты</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="/images/project1.jpg" alt="Личный сайт" class="project-photo">
+                        </div>
+                        <h3>Личный сайт</h3>
+                        <p>Сайт, созданный с помощью HTML/CSS и JS</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="/images/project2.jpg" alt="Приложение" class="project-photo">
+                        </div>
+                        <h3>Приложение для хранения рецептов</h3>
+                        <p>Приложение для хранения рецептов и планирования меню, написанное с использованием JS</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="/images/project3.jpg" alt="Сайт фк" class="project-photo">
+                        </div>
+                        <h3>Дизайн сайта футбольного клуба</h3>
+                        <p>Сайт футбольного клуба с user-friendly дизайном</p>
+                    </div>
                 </div>
-            </section>
+            </div>
+        </section>
+    </main>
 
-            <!-- Опыт работы -->
-            <section class="experience">
-                <h2 class="experience__title">Мой опыт работы</h2>
-                <div class="experience__grid">
-                    <article class="experience-card">
-                        <h3 class="experience-card__title">ML-разработчик в Яндекс (стажировка)</h3>
-                        <p class="experience-card__desc">Шутка. Я безработная. Спасибо за внимание.</p>
-                    </article>
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Контакты</p>
+        </div>
+    </footer>
 
-                    <article class="experience-card">
-                        <h3 class="experience-card__title">ML-разработчик в Яндекс</h3>
-                        <p class="experience-card__desc">Снова шутка. Все еще безработная. Ничего не изменилось.</p>
-                    </article>
-                </div>
-            </section>
-
-        </main>
-
-        <!-- Футер -->
-        <footer class="footer">
-            <p class="footer__text">Футер</p>
-        </footer>
-    </div>
-
-    <!--Переключение темы -->
     <script>
-        const themeSwitcher = document.querySelector('.theme-switcher__button');
-        const root = document.documentElement;
+        // Функция для применения темы
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.add('dark-theme');
+                themeToggle.textContent = '☀️';
+            } else {
+                document.body.classList.remove('dark-theme');
+                themeToggle.textContent = '🌙';
+            }
+        }
 
-        themeSwitcher.addEventListener('click', () => {
-            const currentTheme = root.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            root.setAttribute('data-theme', newTheme);
-            themeSwitcher.textContent = newTheme === 'dark' ? 'Светлая' : 'Тёмная';
+        // Функция для сохранения темы
+        function saveTheme(theme) {
+            localStorage.setItem('theme', theme);
+        }
 
-            localStorage.setItem('theme', newTheme);
-        });
+        // Функция для загрузки темы
+        function loadTheme() {
+            return localStorage.getItem('theme') || 'light';
+        }
 
-        // Загружаем сохраненную тему при загрузке страницы
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            root.setAttribute('data-theme', savedTheme);
-            themeSwitcher.textContent = savedTheme === 'dark' ? 'Светлая' : 'Тёмная';
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggle = document.getElementById('themeToggle');
+
+            // Загружаем сохраненную тему
+            const savedTheme = loadTheme();
+            applyTheme(savedTheme);
+
+            // Переключение темы
+            themeToggle.addEventListener('click', function () {
+                const isDark = document.body.classList.contains('dark-theme');
+                const newTheme = isDark ? 'light' : 'dark';
+
+                applyTheme(newTheme);
+                saveTheme(newTheme);
+            });
+
+            // Анимация прогресс-баров
+            const progressBars = document.querySelectorAll('.skill-progress');
+            progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = width + '%';
+                }, 300);
+            });
         });
     </script>
 </body>

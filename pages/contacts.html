@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио | Контакты</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+
+<body>
+    <!-- Хедер -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Кудрявцева Екатерина Юрьевна</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html">Главная</a></li>
+                    <li><a href="/pages/projects.html">Проекты</a></li>
+                    <li><a href="/pages/diary.html">Дневник</a></li>
+                    <li><a href="/pages/contacts.html" class="active">Контакты</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="main">
+        <section class="contacts">
+            <div class="container">
+                <h2>Свяжитесь со мной</h2>
+
+                <div class="contacts-content">
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Имя:</label>
+                                <input type="text" id="name" name="name" required>
+                                <span class="error-message" id="nameError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Сообщение:</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <span class="error-message" id="messageError"></span>
+                            </div>
+
+                            <button type="submit" class="btn">Отправить сообщение</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3>Контакты:</h3>
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <span>mymail@edu.mirea.ru</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">💻</span>
+                            <span>GitHub: ekudravceva</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>Москва, Россия</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Контакты</p>
+        </div>
+    </footer>
+
+    <script>
+        // Функция для применения темы
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.add('dark-theme');
+                themeToggle.textContent = '☀️';
+            } else {
+                document.body.classList.remove('dark-theme');
+                themeToggle.textContent = '🌙';
+            }
+        }
+
+        // Функция для сохранения темы
+        function saveTheme(theme) {
+            localStorage.setItem('theme', theme);
+        }
+
+        // Функция для загрузки темы
+        function loadTheme() {
+            return localStorage.getItem('theme') || 'light';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggle = document.getElementById('themeToggle');
+
+            // Загружаем сохраненную тему
+            const savedTheme = loadTheme();
+            applyTheme(savedTheme);
+
+            // Переключение темы
+            themeToggle.addEventListener('click', function () {
+                const isDark = document.body.classList.contains('dark-theme');
+                const newTheme = isDark ? 'light' : 'dark';
+
+                applyTheme(newTheme);
+                saveTheme(newTheme);
+            });
+
+            // Валидация формы
+            const contactForm = document.getElementById('contactForm');
+
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                let isValid = true;
+
+                // Валидация имени
+                const nameInput = document.getElementById('name');
+                const nameError = document.getElementById('nameError');
+                if (nameInput.value.trim() === '') {
+                    nameError.textContent = 'Пожалуйста, введите ваше имя';
+                    isValid = false;
+                } else {
+                    nameError.textContent = '';
+                }
+
+                // Валидация email
+                const emailInput = document.getElementById('email');
+                const emailError = document.getElementById('emailError');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    emailError.textContent = 'Пожалуйста, введите корректный email';
+                    isValid = false;
+                } else {
+                    emailError.textContent = '';
+                }
+
+                // Валидация сообщения
+                const messageInput = document.getElementById('message');
+                const messageError = document.getElementById('messageError');
+                if (messageInput.value.trim() === '') {
+                    messageError.textContent = 'Пожалуйста, введите сообщение';
+                    isValid = false;
+                } else {
+                    messageError.textContent = '';
+                }
+
+                if (isValid) {
+                    // Имитация отправки формы
+                    alert('Сообщение успешно отправлено!');
+                    contactForm.reset();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
