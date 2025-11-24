@@ -3,19 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Портфолио | Дневник</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
     <!-- Хедер -->
     <header class="header">
         <div class="container">
             <div class="logo">
                 <h1>Кудрявцева Екатерина Юрьевна</h1>
             </div>
-            <nav class="nav">
+
+            <!-- Добавляем кнопку гамбургера -->
+            <button class="nav-toggle" id="navToggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav" id="mainNav">
                 <ul>
                     <li><a href="../index.html">Главная</a></li>
                     <li><a href="projects.html">Проекты</a></li>
@@ -23,12 +32,13 @@
                     <li><a href="contacts.html">Контакты</a></li>
                 </ul>
             </nav>
+
             <button class="theme-toggle" id="themeToggle">🌙</button>
         </div>
     </header>
 
     <!-- Основной контент -->
-    <main class="main">
+    <main id="main" class="main">
         <section class="diary">
             <div class="container">
                 <h2>Мой учебный прогресс</h2>
@@ -110,6 +120,89 @@
     </footer>
 
     <script>
+        // Функции для мобильного меню
+        function initMobileMenu() {
+            const navToggle = document.getElementById('navToggle');
+            const mainNav = document.getElementById('mainNav');
+            const body = document.body;
+
+            if (!navToggle || !mainNav) return;
+
+            // Создаем оверлей
+            const overlay = document.createElement('div');
+            overlay.className = 'nav-overlay';
+            body.appendChild(overlay);
+
+            // Функция открытия меню
+            function openMenu() {
+                navToggle.classList.add('active');
+                navToggle.setAttribute('aria-expanded', 'true');
+                mainNav.classList.add('active');
+                overlay.classList.add('active');
+                body.style.overflow = 'hidden';
+            }
+
+            // Функция закрытия меню
+            function closeMenu() {
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                mainNav.classList.remove('active');
+                overlay.classList.remove('active');
+                body.style.overflow = '';
+            }
+
+            // Переключение меню
+            navToggle.addEventListener('click', function (e) {
+                e.stopPropagation(); // Предотвращаем всплытие
+                if (mainNav.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            // Закрытие по клику на оверлей
+            overlay.addEventListener('click', closeMenu);
+
+            // Закрытие по клику на ссылку - ФИКС: добавляем небольшую задержку
+            const navLinks = mainNav.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    // Проверяем, что ссылка ведет на существующую страницу
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#' && !href.includes('javascript')) {
+                        setTimeout(closeMenu, 300); // Небольшая задержка для анимации
+                    } else {
+                        closeMenu();
+                    }
+                });
+            });
+
+            // Закрытие по Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+
+            // Закрытие при ресайзе (если перешли на десктоп)
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768 && mainNav.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+
+            // Закрытие при клике вне меню
+            document.addEventListener('click', function (e) {
+                if (mainNav.classList.contains('active') &&
+                    !mainNav.contains(e.target) &&
+                    !navToggle.contains(e.target) &&
+                    !overlay.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+        }
+
         // Функция для применения темы
         function applyTheme(theme) {
             if (theme === 'dark') {
@@ -131,6 +224,7 @@
             return localStorage.getItem('theme') || 'light';
         }
 
+        // ОДИН DOMContentLoaded для всей страницы
         document.addEventListener('DOMContentLoaded', function () {
             const themeToggle = document.getElementById('themeToggle');
 
@@ -163,18 +257,21 @@
                 const newEntry = document.createElement('div');
                 newEntry.className = 'timeline-item in-progress';
                 newEntry.innerHTML = `
-                    <div class="timeline-date">${new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })}</div>
-                    <div class="timeline-content">
-                        <h4>Новая задача</h4>
-                        <p>Описание новой учебной задачи</p>
-                    </div>
-                    <div class="timeline-status">⟳</div>
-                `;
+                <div class="timeline-date">${new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })}</div>
+                <div class="timeline-content">
+                    <h4>Новая задача</h4>
+                    <p>Описание новой учебной задачи</p>
+                </div>
+                <div class="timeline-status">⟳</div>
+            `;
                 timeline.prepend(newEntry);
 
                 // Показать уведомление
-                alert('Новая запись добавлена! Вы можете отредактировать её содержимое.');
+                alert('Новая запись добавлена!');
             });
+
+            // Инициализация мобильного меню
+            initMobileMenu();
         });
     </script>
 </body>
