@@ -52,8 +52,22 @@
                     <div class="hero-image">
                         <div class="photo-placeholder">
                             <div class="photo-frame">
+                                <!-- <source srcset="images/photo2.webp" type="image/webp">
                                 <img src="images/photo2.jpg" alt="Мое фото" class="student-photo" width="300"
-                                    height="300" loading="eager">
+                                    height="300" loading="eager"> -->
+                                <picture>
+                                    <!-- Десктоп (1200px+) -->
+                                    <source media="(min-width: 1200px)"
+                                        srcset="images/photo2-large.webp, images/photo2-large.jpg">
+                                    <!-- Планшет (768px-1199px) -->
+                                    <source media="(min-width: 768px)"
+                                        srcset="images/photo2-medium.webp, images/photo2-medium.jpg">
+                                    <!-- Мобильные (до 767px) - WebP + JPEG фолбэк -->
+                                    <source srcset="images/photo2-small.webp" type="image/webp">
+                                    <!-- Фолбэк -->
+                                    <img src="images/photo2-small.jpg" alt="Мое фото" class="student-photo" width="300"
+                                        height="300">
+                                </picture>
                             </div>
                         </div>
                     </div>
@@ -111,6 +125,7 @@
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-image">
+                            <source srcset="images/project1.webp" type="image/webp">
                             <img src="images/project1.jpg" alt="Личный сайт" class="project-photo" loading="lazy">>
                         </div>
                         <h3>Личный сайт</h3>
@@ -118,6 +133,7 @@
                     </div>
                     <div class="project-card">
                         <div class="project-image">
+                            <source srcset="images/project2.webp" type="image/webp">
                             <img src="images/project2.jpg" alt="Приложение" class="project-photo" loading="lazy">>
                         </div>
                         <h3>Приложение для хранения рецептов</h3>
@@ -125,6 +141,7 @@
                     </div>
                     <div class="project-card">
                         <div class="project-image">
+                            <source srcset="images/project3.webp" type="image/webp">
                             <img src="images/project3.jpg" alt="Сайт фк" class="project-photo" loading="lazy">>
                         </div>
                         <h3>Дизайн сайта футбольного клуба</h3>

@@ -583,6 +583,22 @@ textarea {
     animation: pulse 2s infinite;
 }
 
+.photo-frame picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.photo-frame img {
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -621,10 +637,34 @@ textarea {
 }
 
 .student-photo {
+    display: block;
     width: 90%;
     height: 90%;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center center;
+}
+
+picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.object-fit-demo {
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.object-fit-contain {
+    object-fit: contain;
+    background: var(--secondary-color);
+}
+
+.object-fit-fill {
+    object-fit: fill;
 }
 
 /* Кнопки */
@@ -768,8 +808,9 @@ textarea {
 .project-photo {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     transition: all 0.5s ease;
+    object-fit: cover;
+    object-position: center top;
 }
 
 .project-card:hover .project-photo {
