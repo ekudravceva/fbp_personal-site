@@ -45,6 +45,7 @@ body {
     background-color: var(--background);
     transition: var(--transition);
     margin: 0;
+    position: relative;
 }
 
 /* ИСПРАВЛЕННЫЙ КОНТЕЙНЕР */
@@ -76,7 +77,7 @@ main {
     padding-inline-end: calc(var(--space-md) + env(safe-area-inset-right));
     background: var(--card-bg);
     box-shadow: var(--shadow);
-    z-index: 100;
+    z-index: 1000;
     isolation: isolate;
     transition: var(--transition);
 }
@@ -86,7 +87,7 @@ main {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
-    flex-wrap: wrap;
+    position: relative;
 }
 
 .logo {
@@ -233,7 +234,7 @@ textarea {
     transform: rotate(15deg);
 }
 
-/* ===== ПЕРЕПИСАННОЕ РАБОЧЕЕ МОБИЛЬНОЕ МЕНЮ ===== */
+/* ===== ИСПРАВЛЕННОЕ МОБИЛЬНОЕ МЕНЮ ===== */
 
 /* Кнопка гамбургера */
 .nav-toggle {
@@ -246,7 +247,7 @@ textarea {
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1002;
+    z-index: 1003;
     position: relative;
 }
 
@@ -289,9 +290,9 @@ textarea {
         background: var(--card-bg);
         box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
         transition: right 0.4s ease;
-        z-index: 1001;
+        z-index: 1002;
         padding: 100px 30px 40px;
-        overflow-y: auto;
+        /* overflow-y: auto; */
     }
 
     .nav.active {
@@ -356,7 +357,7 @@ textarea {
         height: 100dvh;
         background: rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(8px);
-        z-index: 1000;
+        z-index: 1001;
         opacity: 0;
         visibility: hidden;
         transition: all 0.4s ease;
@@ -364,7 +365,7 @@ textarea {
 
     .nav-overlay.active {
         opacity: 1;
-        visibility: visible;
+        /* visibility: visible; */
     }
 
     /* Корректируем header для мобильных */
@@ -377,12 +378,12 @@ textarea {
     .theme-toggle {
         margin-left: auto;
         margin-right: 15px;
-        z-index: 1002;
+        z-index: 1003;
         position: relative;
     }
 
     .logo {
-        z-index: 1002;
+        z-index: 1003;
         position: relative;
     }
 }
@@ -1252,7 +1253,7 @@ html {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 1100;
     left: 0;
     top: 0;
     width: 100%;
@@ -1305,7 +1306,7 @@ html {
     cursor: pointer;
     color: var(--text-light);
     transition: var(--transition);
-    z-index: 1001;
+    z-index: 1101;
     min-height: 44px;
     min-width: 44px;
     display: flex;
@@ -1396,35 +1397,9 @@ html {
     }
 }
 
-/* ⚡ ЭКСТРЕННЫЙ ФИКС ДЛЯ МОБИЛЬНОГО МЕНЮ ⚡ */
+/* ⚡ ФИНАЛЬНЫЙ ФИКС ДЛЯ МОБИЛЬНОГО МЕНЮ ⚡ */
 @media (max-width: 768px) {
     .nav {
         background: var(--card-bg) !important;
-    }
-
-    .nav a {
-        color: var(--text-color) !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-
-    .nav-overlay {
-        z-index: 999 !important;
-    }
-
-    .nav {
-        z-index: 1000 !important;
-    }
-
-    .nav-toggle,
-    .theme-toggle,
-    .logo {
-        z-index: 1001 !important;
-    }
-
-    /* Гарантируем кликабельность */
-    .nav a {
-        pointer-events: auto !important;
-        cursor: pointer !important;
     }
 }
