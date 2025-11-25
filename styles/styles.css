@@ -1444,3 +1444,184 @@ html {
         background: var(--card-bg) !important;
     }
 }
+
+
+/* === Стили доступности === */
+
+/* Пропуск ссылок */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #0066cc;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 10000;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 6px;
+    outline: 3px solid #ffbf47;
+    outline-offset: 2px;
+}
+
+/* Скрытый текст для скринридеров */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Индикатор обязательных полей */
+.required {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* Стили для полей с ошибками */
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border-color: #d32f2f !important;
+    background-color: #ffebee;
+}
+
+input[aria-invalid="true"]:focus,
+textarea[aria-invalid="true"]:focus {
+    outline: 2px solid #d32f2f;
+    outline-offset: 2px;
+}
+
+/* Сообщения об ошибках */
+.error-message {
+    color: #d32f2f;
+    font-size: 0.875rem;
+    margin-top: 4px;
+    display: block;
+    font-weight: 500;
+}
+
+/* Текст подсказок */
+.help-text {
+    color: #666;
+    font-size: 0.875rem;
+    margin-top: 4px;
+    margin-bottom: 1em;
+    display: block;
+}
+
+/* Улучшенные стили фокуса */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+}
+
+.nav-link:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+}
+
+/* Высококонтрастная тема */
+@media (prefers-contrast: high) {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .header,
+    .footer {
+        background: #000 !important;
+        color: #fff !important;
+    }
+
+    a {
+        color: #0000ee !important;
+    }
+
+    button {
+        border: 2px solid #000 !important;
+    }
+}
+
+/* Уменьшение движения */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Стили для fieldset и legend */
+fieldset {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0 0 20px 0;
+}
+
+legend {
+    font-weight: 600;
+    padding: 0 10px;
+    color: #333;
+}
+
+.dark-theme fieldset {
+    border-color: #555;
+}
+
+.dark-theme legend {
+    color: #fff;
+}
+
+/* Улучшенные стили для контактной информации */
+.contact-info h2 {
+    margin-bottom: 1rem;
+    color: inherit;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.contact-item:focus-within {
+    background-color: rgba(0, 102, 204, 0.1);
+    outline: 2px solid #0066cc;
+}
+
+.contact-icon {
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+}
+
+/* Состояния кнопок */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn:focus:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
